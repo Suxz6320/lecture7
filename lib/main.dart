@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'pages/detail_page.dart';
+import 'pages/home_page.dart';
 import 'pages/list_page.dart';
 
 void main() {
@@ -18,8 +20,13 @@ class AppSkeletonApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
       ),
-      // 步骤一：先让列表页直接做首页；步骤二改命名路由表
-      home: const ListPage(),
+      // 步骤二：注册命名路由表，全部使用命名路由跳转
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/list': (context) => const ListPage(),
+        '/detail': (context) => const DetailPage(),
+      },
     );
   }
 }

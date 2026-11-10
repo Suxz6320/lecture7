@@ -43,9 +43,11 @@ class _ListPageState extends State<ListPage> {
               itemCount: books.length,
               itemBuilder: (context, i) => BookTile(
                 book: books[i],
-                // 步骤二再接入路由跳转；本步骤先验证渲染与点击回调
-                onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('点击了《${books[i].title}》')),
+                // 步骤二：携带强类型 Book 实例跳详情页
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  '/detail',
+                  arguments: books[i],
                 ),
               ),
             ),

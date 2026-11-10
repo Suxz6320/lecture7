@@ -1,16 +1,19 @@
-// app_skeleton 冒烟测试：验证应用能构建，列表页加载出图书数据。
+// app_skeleton 冒烟测试：验证应用能构建，命名路由可进入列表页并加载图书数据。
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:app_skeleton/main.dart';
 
 void main() {
-  testWidgets('list page renders books from assets', (WidgetTester tester) async {
+  testWidgets('named route /list renders books from assets',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const AppSkeletonApp());
-    // 等待异步加载完成
     await tester.pumpAndSettle();
 
-    // books.json 中的若干条目应出现在列表里。
+    // 首页点击入口进入 /list
+    await tester.tap(find.text('查看全部图书'));
+    await tester.pumpAndSettle();
+
     // 注意：ListView.builder 懒构建，只有可视区域内的条目会被渲染，
     // 因此这里断言前几条可见书目，并验证列表本身存在。
     expect(find.byType(ListView), findsOneWidget);
