@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../models/book.dart';
 
-/// 参数化复用组件：图书列表项。
-///
-/// 参数化三问（指南第四节）：
-/// - 哪些数据变 → [book] 进参；
-/// - 哪些行为变 → [onTap] 回调进参；
-/// - 样式变化少 → 固定在 build 内。
+/// 参数化复用组件之一：图书列表项。
+/// 数据进参（book），行为回调（onTap / onLongPress），样式用默认值。
 class BookTile extends StatelessWidget {
-  const BookTile({super.key, required this.book, this.onTap});
+  const BookTile({super.key, required this.book, this.onTap, this.onLongPress});
 
   final Book book;
   final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +19,7 @@ class BookTile extends StatelessWidget {
       subtitle: Text('${book.id} · ${book.category}'),
       trailing: Text('${book.borrowCount}次'),
       onTap: onTap,
+      onLongPress: onLongPress,
     );
   }
 }

@@ -1,23 +1,39 @@
-// app_skeleton 冒烟测试：验证应用能构建，命名路由可进入列表页并加载图书数据。
+// app_skeleton 冒烟测试：验证三页闭环——网格首页→分类列表→筛选回传。
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:app_skeleton/main.dart';
 
 void main() {
-  testWidgets('named route /list renders books from assets',
+  testWidgets('grid home -> filtered list -> pop with value',
       (WidgetTester tester) async {
     await tester.pumpWidget(const AppSkeletonApp());
     await tester.pumpAndSettle();
 
-    // 首页点击入口进入 /list
-    await tester.tap(find.text('查看全部图书'));
-    await tester.pumpAndSettle();
+    // 步骤三：首页是 GridView 分类网格
+    expect(find.byType(GridView), findsOneWidget);
+    expect(find.text('编程'), findsOneWidget);
+    expect(find.text('人工智能'), findsOneWidget);
 
-    // 注意：ListView.builder 懒构建，只有可视区域内的条目会被渲染，
-    // 因此这里断言前几条可见书目，并验证列表本身存在。
+    // 点分类卡片进入列表页并按类别过滤
+    await tester.tap(find.text('编程'));
+    await tester.pumpAndSettle();
     expect(find.byType(ListView), findsOneWidget);
     expect(find.text('Dart程序设计基础'), findsOneWidget);
-    expect(find.text('Flutter移动应用开发'), findsOneWidget);
+    expect(find.text('高等数学（上）'), findsNothing); // 数学类不应出现
+
+    // 长按弹出筛选层，选择“仅看高借阅量”
+    await tester.longPress(find.text('Dart程序设计基础'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('仅看高借阅量（≥50次）'));
+    await tester.pumpAndSettle();
+    // 编程类里只有 B017(71次) ≥50，其余被过滤
+    expect(find.text('Python编程从入门到实践'), findsOneWidget);
+    expect(find.text('Dart程序设计基础'), findsNothing);
+
+    // 返回首页，回传值显示在 AppBar 副标题
+    await tester.tap(find.byIcon(Icons.arrow_back));
+    await tester.pumpAndSettle();
+    expect(find.text('上次筛选：编程 · 仅看高借阅量'), findsOneWidget);
   });
 }
