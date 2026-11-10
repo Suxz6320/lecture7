@@ -102,7 +102,7 @@ class _ListPageState extends State<ListPage> {
             Text('$_category · 图书列表'),
             Text(
               _highOnly ? '仅看高借阅量（≥50次）' : '全部',
-              style: const TextStyle(fontSize: 12, color: Colors.white70),
+              style: const TextStyle(fontSize: 12, color: Colors.black54),
             ),
           ],
         ),

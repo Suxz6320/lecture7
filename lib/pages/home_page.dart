@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
             if (_lastFilter != null)
               Text(
                 '上次筛选：$_lastFilter',
-                style: const TextStyle(fontSize: 12, color: Colors.white70),
+                style: const TextStyle(fontSize: 12, color: Colors.black54),
               ),
           ],
         ),
