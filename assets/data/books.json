@@ -1,0 +1,22 @@
+[
+  {"id": "B001", "title": "Dart程序设计基础", "category": "编程", "borrowCount": 45},
+  {"id": "B002", "title": "Flutter移动应用开发", "category": "编程", "borrowCount": 38},
+  {"id": "B003", "title": "数据结构与算法", "category": "计算机", "borrowCount": 52},
+  {"id": "B004", "title": "操作系统原理", "category": "计算机", "borrowCount": 21},
+  {"id": "B005", "title": "计算机网络", "category": "计算机", "borrowCount": 33},
+  {"id": "B006", "title": "高等数学（上）", "category": "数学", "borrowCount": 60},
+  {"id": "B007", "title": "线性代数", "category": "数学", "borrowCount": 41},
+  {"id": "B008", "title": "概率论与数理统计", "category": "数学", "borrowCount": 18},
+  {"id": "B009", "title": "人工智能导论", "category": "人工智能", "borrowCount": 55},
+  {"id": "B010", "title": "机器学习实战", "category": "人工智能", "borrowCount": 49},
+  {"id": "B011", "title": "深入理解计算机系统", "category": "计算机", "borrowCount": 47},
+  {"id": "B012", "title": "编译原理", "category": "计算机", "borrowCount": 26},
+  {"id": "B013", "title": "高等数学（下）", "category": "数学", "borrowCount": 58},
+  {"id": "B014", "title": "数学分析", "category": "数学", "borrowCount": 35},
+  {"id": "B015", "title": "深度学习", "category": "人工智能", "borrowCount": 62},
+  {"id": "B016", "title": "自然语言处理", "category": "人工智能", "borrowCount": 44},
+  {"id": "B017", "title": "Python编程从入门到实践", "category": "编程", "borrowCount": 71},
+  {"id": "B018", "title": "JavaScript高级程序设计", "category": "编程", "borrowCount": 29},
+  {"id": "B019", "title": "离散数学", "category": "数学", "borrowCount": 23},
+  {"id": "B020", "title": "强化学习", "category": "人工智能", "borrowCount": 51}
+]
