@@ -70,16 +70,36 @@ class _HomePageState extends State<HomePage> {
                 crossAxisSpacing: 12,
                 childAspectRatio: 1.5,
               ),
-              itemCount: _categories.length + 1,
+              itemCount: _categories.length + 3,
               itemBuilder: (context, i) {
                 if (i == _categories.length) {
-                  // 最后一张：全部图书入口
+                  // 全部图书入口
                   return CategoryCard(
                     title: '全部图书',
-                    count: books.length,
+                    subtitle: '${books.length} 本',
                     icon: Icons.library_books,
                     color: Colors.indigo,
                     onTap: () => _openCategory('全部'),
+                  );
+                }
+                if (i == _categories.length + 1) {
+                  // 自主实践1：分页加载演示入口
+                  return CategoryCard(
+                    title: '分页加载演示',
+                    subtitle: '每次追加 20 条',
+                    icon: Icons.expand_more,
+                    color: Colors.deepOrange,
+                    onTap: () => Navigator.pushNamed(context, '/paged'),
+                  );
+                }
+                if (i == _categories.length + 2) {
+                  // 自主实践2：第 5 条路由——借阅统计
+                  return CategoryCard(
+                    title: '借阅统计',
+                    subtitle: '各分类汇总',
+                    icon: Icons.bar_chart,
+                    color: Colors.green,
+                    onTap: () => Navigator.pushNamed(context, '/stats'),
                   );
                 }
                 final cat = _categories[i];
@@ -87,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                     books.where((b) => b.category == cat).length;
                 return CategoryCard(
                   title: cat,
-                  count: count,
+                  subtitle: '$count 本',
                   icon: _categoryIcon(cat),
                   color: _categoryColor(cat),
                   onTap: () => _openCategory(cat),
